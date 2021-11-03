@@ -1,0 +1,3 @@
+Fazer o jogo ir ficando mais rapido
+Fazer a contação do score
+Fazer o GameOver/Reiniciar o Jogo
