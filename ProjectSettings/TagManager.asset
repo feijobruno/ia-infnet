@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - obstaculo
+  - recompensa
+  - IA
   layers:
   - Default
   - TransparentFX

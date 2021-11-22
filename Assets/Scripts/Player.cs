@@ -9,19 +9,16 @@ public class Player : MonoBehaviour
     private Animator animator;
 
     public float speed;
-    private float score;
 
-    private Vector3 verticalTargetPostion;
+    private int currentLane = 0;
+    private Vector3 verticalTargetPosition;
 
-    public GameManager gameManager;
+    public GerarCenario gerarCenario;
 
     void Start()
     {
-        verticalTargetPostion = transform.position;
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -30,9 +27,6 @@ public class Player : MonoBehaviour
             return;
 
         animator.SetFloat("Speed", speed);
-
-        score += Time.deltaTime * speed;
-        gameManager.UpdateScore((int)score);
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -43,25 +37,24 @@ public class Player : MonoBehaviour
             MudarFaixa(1);
         }
 
-       Vector3 targetPosition = new Vector3(verticalTargetPostion.x, verticalTargetPostion.y, transform.position.z);
-       transform.position = Vector3.MoveTowards(transform.position, targetPosition, 10 * Time.deltaTime);
+        Vector3 targetPosition = new Vector3(verticalTargetPosition.x, verticalTargetPosition.y, transform.localPosition.z);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, (speed * 5) * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
-        if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Correndo") && animator.GetInteger("Start") == 1)
-            rb.velocity = Vector3.forward * (speed * 5);
+        rb.velocity = Vector3.forward * (speed * 5);
     }
 
     private void MudarFaixa(int direcao)
     {
-        if ((transform.position.x + direcao) < -1 || (transform.position.x + direcao) > 1)
+        int targetLane = currentLane + direcao;
+        if (targetLane < -1 || targetLane > 1)
             return;
 
-        Vector3 vector3 = transform.position;
-        vector3.x += direcao;
+        currentLane = targetLane;
 
-        verticalTargetPostion = vector3;
+        verticalTargetPosition = new Vector3(currentLane, 0, 0);
     }
 
     public void AumentarVelocidade()
@@ -74,10 +67,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("obstaculo"))
         {
-            animator.SetInteger("Start", 0);
-            animator.SetBool("Morreu", true);
-            rb.velocity = Vector3.zero;
-            gameManager.GameOver();
+            gerarCenario.Reset(this.transform);
         }
     }
 }

@@ -1,0 +1,65 @@
+{
+    "IA": {
+        "checkpoints": [
+            {
+                "steps": 17499940,
+                "file_path": "results\\Fox_IA_1\\IA\\IA-17499940.onnx",
+                "reward": 135.76750349998474,
+                "creation_time": 1637582718.4957342,
+                "auxillary_file_paths": [
+                    "results\\Fox_IA_1\\IA\\IA-17499940.pt"
+                ]
+            },
+            {
+                "steps": 17999983,
+                "file_path": "results\\Fox_IA_1\\IA\\IA-17999983.onnx",
+                "reward": null,
+                "creation_time": 1637585195.0788496,
+                "auxillary_file_paths": [
+                    "results\\Fox_IA_1\\IA\\IA-17999983.pt"
+                ]
+            },
+            {
+                "steps": 18499984,
+                "file_path": "results\\Fox_IA_1\\IA\\IA-18499984.onnx",
+                "reward": null,
+                "creation_time": 1637587672.0262234,
+                "auxillary_file_paths": [
+                    "results\\Fox_IA_1\\IA\\IA-18499984.pt"
+                ]
+            },
+            {
+                "steps": 18999997,
+                "file_path": "results\\Fox_IA_1\\IA\\IA-18999997.onnx",
+                "reward": 135.76750349998474,
+                "creation_time": 1637590144.3773746,
+                "auxillary_file_paths": [
+                    "results\\Fox_IA_1\\IA\\IA-18999997.pt"
+                ]
+            },
+            {
+                "steps": 19306907,
+                "file_path": "results\\Fox_IA_1\\IA\\IA-19306907.onnx",
+                "reward": 135.76750349998474,
+                "creation_time": 1637591667.7067156,
+                "auxillary_file_paths": [
+                    "results\\Fox_IA_1\\IA\\IA-19306907.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 19306907,
+            "file_path": "results\\Fox_IA_1\\IA.onnx",
+            "reward": 135.76750349998474,
+            "creation_time": 1637591667.7067156,
+            "auxillary_file_paths": [
+                "results\\Fox_IA_1\\IA\\IA-19306907.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

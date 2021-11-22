@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class CameraPlayer : MonoBehaviour
 {
-	private Transform player;
+	public Transform raposa;
 	private Vector3 offset;
 
 	void Start()
 	{
-		player = GameObject.FindGameObjectWithTag("Player").transform;
-		offset = transform.position - player.position;
+		offset = transform.position - raposa.position;
 	}
 
     void LateUpdate()
 	{
-		Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, player.position.z + offset.z);
+		Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, raposa.position.z + offset.z);
 		transform.position = newPosition;
 	}
 }

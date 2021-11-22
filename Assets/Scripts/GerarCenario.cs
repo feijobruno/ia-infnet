@@ -17,18 +17,29 @@ public class GerarCenario : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            transform.position = new Vector3(0, 0, transform.position.z + 105 * 2);
             other.GetComponent<Player>().AumentarVelocidade();
+            Reset(other.transform);
+        }
 
-            foreach (Paisagem paisagem in paisagems)
-            {
-                paisagem.GerarPaisagens();
-            }
+        if (other.CompareTag("IA"))
+        {
+            other.GetComponent<IA>().AumentarVelocidade();
+            Reset(other.transform);
+        }
+    }
 
-            foreach (Obstaculos obstaculo in obstaculos)
-            {
-                obstaculo.GerarObstaculos();
-            }
+    public void Reset(Transform jogador)
+    {
+        jogador.localPosition = new Vector3(jogador.localPosition.x, jogador.localPosition.y, -1.5f);
+
+        foreach (Paisagem paisagem in paisagems)
+        {
+            paisagem.GerarPaisagens();
+        }
+
+        foreach (Obstaculos obstaculo in obstaculos)
+        {
+            obstaculo.GerarObstaculos();
         }
     }
 }
